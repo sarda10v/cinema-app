@@ -1,0 +1,119 @@
+/* !! IFRAME */
+.mainCinema {
+  width: 100%;
+  color: white;
+  position: relative;
+  list-style: none;
+  text-align: justify;
+}
+.mainCinema header {
+  width: 100%;
+  position: absolute;
+  background-color: black;
+  z-index: 9999;
+  /* logo */
+  align-items: center;
+  display: flex;
+}
+.logoWrapper {
+  width: 90%;
+  margin: 10px auto;
+  text-decoration: none;
+}
+.logo {
+  text-align: left;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+}
+.mainCinema h2 {
+  color: white;
+  font-size: 45px;
+  font-weight: 700;
+}
+.IframeCinema {
+  width: 50%;
+  height: 400px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  z-index: 1;
+}
+.IframeCinema iframe {
+  width: 100%;
+  height: 100%;
+}
+.borderIframeCinema {
+  width: 100%;
+  height: 400px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0%;
+  background-image: linear-gradient(180deg, transparent 1%, #000 96%),
+    linear-gradient(90deg, transparent 87%, #000),
+    linear-gradient(270deg, transparent 87%, #000);
+}
+
+/* !! INFORM */
+.cinemaInform {
+  width: 90%;
+  margin: auto;
+  position: relative;
+}
+.flexCinemaInform {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+
+  width: 90%;
+  margin: 250px auto;
+}
+.imageCinemaInform {
+  width: 450px;
+  height: 450px;
+  transition: all 300ms;
+}
+.imageCinemaInform img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.descriptionСinemaInform {
+  width: 100%;
+  margin-left: 20px;
+  padding: 0 20px;
+}
+.descriptionСinemaInform h5 {
+  font-weight: bold;
+  margin-top: 15px;
+}
+/* !! ACTORS */
+.actorsWrapper {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardActors {
+  width: 25%;
+  margin: auto;
+}
+.cardActors .nameActors {
+  /* display: block; */
+  text-align: center;
+  font-size: 1.2em;
+}
+.cardActors .imgActors {
+  width: 150px;
+  height: 150px;
+  margin: 5px auto 0;
+}
+.imgActors img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

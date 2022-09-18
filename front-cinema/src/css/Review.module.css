@@ -1,0 +1,51 @@
+.commentsWrapper {
+  width: 100%;
+  margin-bottom: 50px;
+}
+.commentsInput {
+  width: 100%;
+}
+.commentsInput textarea {
+  width: 100%;
+}
+.commentsInput button{
+  display: flex;
+  justify-content: right;
+}
+.commentName {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.commentBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 28px;
+  font-weight: 600;
+  border-bottom: 1px solid white;
+}
+.icons button {
+  background-color: transparent;
+  color: white;
+  transition: 250ms;
+}
+.icons .iconsDeleteBtn:hover {
+  color: red;
+}
+.icons .iconsPatchBtn:hover {
+  color: yellow;
+}
+.commentText {
+  padding: 5px 0;
+}
+.likeTrue {
+  color: red;
+}
+.iconsAddLike {
+  border-style: none;
+  background-color: transparent;
+  color: white;
+  font-size: 28px;
+}

@@ -1,0 +1,148 @@
+/*!! CINEMA */
+.mainWrapperCinema {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  width: 100%;
+  background-color: #011522 !important;
+  height: 100vh;
+  z-index: 1;
+  color: white;
+}
+
+.tools {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.tools h4 {
+  font-weight: 700;
+  font-size: 30px;
+}
+.search {
+  width: 45%;
+  background-color: #fff;
+  border-radius: 8px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  padding: 5px 15px;
+}
+.tools input {
+  width: 100%;
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+  text-align: left;
+  padding-left: 5px;
+  transition: 250ms;
+}
+.tools input:focus {
+  opacity: 0.5;
+}
+
+.tools .icons {
+  font-size: 40px;
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  position: relative;
+}
+
+.cardContent {
+  width: 90%;
+  margin: auto;
+  flex-wrap: wrap-reverse;
+  display: flex;
+  background-color: #011522;
+  overflow: auto; /*скрол*/
+}
+.card_content::-webkit-scrollbar,
+.modal-content::-webkit-scrollbar {
+  width: 7px; /* ширина всей полосы прокрутки */
+}
+.card_content::-webkit-scrollbar-track,
+.modal-content::-webkit-scrollbar-track {
+  background: #011522; /* цвет зоны отслеживания */
+}
+.card_content::-webkit-scrollbar-thumb,
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #4f4f4f; /* цвет бегунка */
+  border-radius: 20px; /* округлось бегунка */
+}
+/* !! MODAL AUTH/CONFIG */
+.modalHeaderAuth {
+  width: 150px;
+  max-height: 150px;
+  background-color: #011522;
+  position: absolute;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  z-index: 9999;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+}
+.modalHeaderAuth div {
+  width: 100%;
+  transition: 250ms;
+}
+.modalHeaderAuth div:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.authModal,
+.loginModal {
+  position: absolute;
+  left: 35%;
+  top: 25%;
+  z-index: 9999;
+}
+/* !! LOADER */
+.loaderWrapper {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* From uiverse.io by @gagan-gv */
+.loader span {
+  font-size: 22px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  animation: blur 3s linear infinite;
+  line-height: 20px;
+  transition: all 0.5s;
+  letter-spacing: 0.2em;
+}
+
+@keyframes blur {
+  0%,
+  90% {
+    filter: blur(0);
+  }
+
+  50% {
+    filter: blur(10px);
+  }
+}
+
+.spinner {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
