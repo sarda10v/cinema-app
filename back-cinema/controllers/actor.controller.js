@@ -1,7 +1,6 @@
 const Actor = require("../models/Actor.model");
 
 module.exports.actorController = {
-  // !! POST
   addActor: async (req, res) => {
     try {
       const actor = await Actor.create({
@@ -14,7 +13,6 @@ module.exports.actorController = {
     }
   },
 
-  // !! DELETE
   deleteActorById: async (req, res) => {
     try {
       const actor = await Actor.findByIdAndRemove(req.params.id);
@@ -24,7 +22,6 @@ module.exports.actorController = {
     }
   },
 
-  // !! PATCH
   editActorById: async (req, res) => {
     try {
       const actor = await Actor.findByIdAndUpdate(req.params.id, {
@@ -37,7 +34,6 @@ module.exports.actorController = {
     }
   },
 
-  // !! GET
   getActors: async (req, res) => {
     try {
       const actor = await Actor.find();

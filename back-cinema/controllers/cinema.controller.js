@@ -1,7 +1,6 @@
 const Cinema = require("../models/Cinema.model");
 
 module.exports.cinemaController = {
-  // !! POST
   addCinema: async (req, res) => {
     const { image, name, description, year, actors, tags, genres, reviews } =
       req.body;
@@ -22,7 +21,6 @@ module.exports.cinemaController = {
     }
   },
 
-  // !! DELETE
   deleteCinemaById: async (req, res) => {
     try {
       const cinema = await Cinema.findByIdAndRemove(req.params.id);
@@ -32,7 +30,6 @@ module.exports.cinemaController = {
     }
   },
 
-  // !! PATCH
   editCinemaById: async (req, res) => {
     const { image, name, description, year, actors, tags, genres, reviews } =
       req.body;
@@ -54,7 +51,6 @@ module.exports.cinemaController = {
     }
   },
 
-  // !! GET
   getCinemas: async (req, res) => {
     try {
       const { page = 1, limit = 4 } = req.query;

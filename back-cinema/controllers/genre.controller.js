@@ -1,7 +1,6 @@
 const Genre = require("../models/Genre.model");
 
 module.exports.genreController = {
-  // !! POST
   addGenre: async (req, res) => {
     try {
       const genre = await Genre.create({
@@ -13,7 +12,6 @@ module.exports.genreController = {
     }
   },
 
-  // !! DELETE
   deleteGenreById: async (req, res) => {
     try {
       const genre = await Genre.findByIdAndRemove(req.params.id);
@@ -23,7 +21,6 @@ module.exports.genreController = {
     }
   },
 
-  // !! PATCH
   editGenreById: async (req, res) => {
     try {
       const genre = await Genre.findByIdAndUpdate(req.params.id, {
@@ -35,7 +32,6 @@ module.exports.genreController = {
     }
   },
 
-  // !! GET
   getGenres: async (req, res) => {
     try {
       const genre = await Genre.find();

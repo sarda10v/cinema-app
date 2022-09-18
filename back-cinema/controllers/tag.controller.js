@@ -1,7 +1,6 @@
 const Tag = require("../models/Tag.model");
 
 module.exports.tagController = {
-  // !! POST
   addTag: async (req, res) => {
     try {
       const tag = await Tag.create({
@@ -13,7 +12,6 @@ module.exports.tagController = {
     }
   },
 
-  // !! DELETE
   deleteTagById: async (req, res) => {
     try {
       const tag = await Tag.findByIdAndRemove(req.params.id);
@@ -23,7 +21,6 @@ module.exports.tagController = {
     }
   },
 
-  // !! PATCH
   editTagById: async (req, res) => {
     try {
       const tag = await Tag.findByIdAndUpdate(req.params.id, {
@@ -35,7 +32,6 @@ module.exports.tagController = {
     }
   },
 
-  // !! GET
   getTags: async (req, res) => {
     try {
       const tag = await Tag.find();
