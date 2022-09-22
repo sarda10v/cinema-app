@@ -54,10 +54,7 @@ module.exports.cinemaController = {
   getCinemas: async (req, res) => {
     try {
       const { page = 1, limit = 4 } = req.query;
-      const cinema = await Cinema.find()
-        .limit(limit * 1)
-        .skip((page - 1) * limit)
-        .populate("actors tags genres reviews");
+      const cinema = await Cinema.find().populate("actors tags genres reviews");
       return res.json(cinema);
     } catch (err) {
       res.json(err);

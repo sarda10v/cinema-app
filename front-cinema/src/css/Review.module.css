@@ -8,7 +8,7 @@
 .commentsInput textarea {
   width: 100%;
 }
-.commentsInput button{
+.commentsInput button {
   display: flex;
   justify-content: right;
 }
@@ -48,4 +48,26 @@
   background-color: transparent;
   color: white;
   font-size: 28px;
+  transition: 250ms;
+}
+.likeFalse span {
+  font-size: 20px;
+}
+.addCommBnt {
+  float: right;
+}
+.addCommBnt {
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: transparent;
+  font-size: 18px;
+  padding: 5px 10px;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  transition: 250ms;
+}
+.addCommBnt:hover {
+  background-color: white;
+  color: rgb(0, 0, 0);
 }

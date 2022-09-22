@@ -12,7 +12,6 @@ const CinemaModal = ({ lgShow, setLgShow, item }) => {
           <iframe
             width="560"
             height="320"
-            // src={`${item.trailer}?&autoplay=1`}
             src={`${item.trailer}`}
             title="YouTube video player"
             frameBorder="1"

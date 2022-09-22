@@ -67,7 +67,6 @@ export const addLikeInReview = createAsyncThunk(
       await fetch(`http://localhost:4000/review/${i}/user`, {
         method: "PATCH",
         headers: {
-          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ like: userId }),
@@ -86,7 +85,6 @@ export const removeLikeInReview = createAsyncThunk(
       await fetch(`http://localhost:4000/review/${i}/user/remove`, {
         method: "PATCH",
         headers: {
-          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ like: userId }),
@@ -110,6 +108,7 @@ export const reviewSlice = createSlice({
         state.review = action.payload;
       })
       .addCase(addNewReview.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.review.push(action.payload);
       })
       .addCase(deleteReview.fulfilled, (state, action) => {
@@ -127,16 +126,16 @@ export const reviewSlice = createSlice({
         });
       })
       .addCase(removeLikeInReview.fulfilled, (state, action) => {
-        state.review = state.review.map((item) => {
-          if (item._id === action.payload.i) {
-            return {
-              ...item,
-              like: item.like.filter((el) => {
-                return el._id !== action.payload.userId;
-              }),
-            };
-          }
-        });
+        // state.review = state.review.map((item) => {
+        //   if (item._id === action.payload.i) {
+        //     return {
+        //       ...item,
+        //       like: item.like.filter((el) => {
+        //         return el._id !== action.payload.userId;
+        //       }),
+        //     };
+        //   }
+        // });
       });
   },
 });

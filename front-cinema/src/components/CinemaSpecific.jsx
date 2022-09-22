@@ -9,9 +9,9 @@ import Review from "./Review";
 const CinemaSpecific = () => {
   const cinema = useSelector((state) => state.cinema.cinema);
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { id } = useParams(); // id фильма
 
-  // !! ФИЛЬТРАЦИЯ ФИЛЬМА ОПРЕДЕЛЕННОГО ЖАНРА
+  // !! ФИЛЬТРАЦИЯ ФИЛЬМА ПО ОПРЕДЕЛЕННОМУ ЖАНРУ
   const filteredCinemaById = cinema.filter((i) => i._id === id);
 
   useEffect(() => {
@@ -20,11 +20,13 @@ const CinemaSpecific = () => {
 
   return (
     <div className={styles.mainCinema}>
+      {/* HEADER */}
       <header>
         <Link to={"/"} className={styles.logoWrapper}>
           <div className={styles.logo}>CINEMA</div>
         </Link>
       </header>
+
       {filteredCinemaById.map((item) => {
         return (
           <React.Fragment key={item._id}>

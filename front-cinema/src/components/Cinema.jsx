@@ -12,9 +12,7 @@ const Cinema = () => {
   const token = useSelector((state) => state.application.token);
   const dispatch = useDispatch();
 
-  const [page, setPage] = useState(1)
-  
-  // !! ФИЛЬТР ПО ВСЕМ КЛЮЧАМ
+  // !! ФИЛЬТР ПО ВСЕМ КЛЮЧАМ ФИЛЬМА
   const [value, setValue] = useState("");
   const cinemaFilt = cinema.filter((item) => {
     let filteredYearsAndNames =
@@ -70,7 +68,7 @@ const Cinema = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchCinema(page));
+    dispatch(fetchCinema());
   }, [dispatch]);
 
   return (
@@ -78,6 +76,7 @@ const Cinema = () => {
       <div className={styles.card}>
         <div className={styles.tools}>
           <h4>CINEMA</h4>
+
           {/* SEARCH GATE */}
           <div className={styles.search}>
             <ion-icon name="search-outline"></ion-icon>
@@ -96,21 +95,21 @@ const Cinema = () => {
           </div>
 
           <div className={styles.icons}>
-            {token ? ( // если пользователь авторизован
+            {token ? (
+              // !! если пользователь авторизован
               <ion-icon
                 name="person-circle-outline"
                 onClick={handleOpenModalHeader}
               ></ion-icon>
             ) : (
-              // если пользователь не авторизован
+              // !! если пользователь не авторизован
               <ion-icon
                 name="filter-circle-outline"
                 onClick={handleOpenModalHeader}
               ></ion-icon>
             )}
 
-            {/* модалка для выбора авторизация/регистрация/выход */}
-            {!modal ? null : (
+            {!modal ? null : ( // !! модалка для выбора авторизация/регистрация/выход
               <div className={styles.modalHeaderAuth}>
                 <span>
                   <ion-icon
@@ -130,9 +129,8 @@ const Cinema = () => {
           </div>
         </div>
 
-        {/* Блок для рендера карточек фильмов */}
         <div className={styles.cardContent}>
-          {!cinemaFilt.length ? (
+          {!cinemaFilt.length ? ( // !! Блок для рендера карточек фильмов
             <div className={styles.spinner}>
               <h1>Ничего нет!</h1>
             </div>
@@ -142,17 +140,17 @@ const Cinema = () => {
             })
           )}
         </div>
+
         {/* ПАГИНАЦИЯ */}
-        <Pagination onChangePage={(number) => setPage(number)}/>
-        {/* модалка для регистрации */}
-        {auths ? (
+        <Pagination />
+
+        {auths ? ( // !! модалка для регистрации
           <div className={styles.authModal}>
             <SignUpModal setAuths={setAuths} setLogins={setLogins} />
           </div>
         ) : null}
 
-        {/* модалка для авторизации */}
-        {logins ? (
+        {logins ? ( // !! модалка для авторизации
           <div className={styles.loginModal}>
             <SignInModal setLogins={setLogins} setAuths={setAuths} />
           </div>

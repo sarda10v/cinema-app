@@ -7,6 +7,7 @@ import {
   addLikeInReview,
   removeLikeInReview,
 } from "../features/reviewsSlice";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import styles from "../css/Review.module.css";
 
@@ -18,22 +19,28 @@ const Review = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  // !! ДОБАВЛЕНИЕ КОММЕНТАРИЯ
   const handleAddReview = () => {
     dispatch(addNewReview({ text, userId, id }));
     setText("");
   };
 
+  // !! УДАЛЕНИЕ КОММЕНТАРИЯ
   const handleDeleteBtn = (id) => {
     if (token) {
       dispatch(deleteReview(id));
     }
   };
+
+  // !! ДОБАВЛЕНИЕ/УДАЛЕНИЕ ЛАЙКА
   const handleAddLike = (i, userId) => {
     if (reviews[0].like.find((i) => i._id === userId)) {
       return dispatch(removeLikeInReview({ i, userId }));
     }
     dispatch(addLikeInReview({ i, userId }));
   };
+
+  // !! Привязка к ENTER
   const handleAddEnter = (e) => {
     const code = e.keyCode || e.which;
     if (code === 13) {
@@ -45,7 +52,9 @@ const Review = () => {
     dispatch(fetchReviews());
   }, [dispatch]);
 
+  // !! ФИЛЬТРАЦИЯ КОММЕНТАРИЕВ ОПРЕДЕЛЕННОГО ФИМЬМА
   const filteredReviews = reviews.filter((i) => i.cinema === id);
+
   return (
     <div className={styles.commentsWrapper}>
       <h5>Отзывы:</h5>
@@ -68,6 +77,7 @@ const Review = () => {
                     <button className={styles.iconsPatchBtn}>
                       <ion-icon name="reorder-four-outline"></ion-icon>
                     </button>
+
                     {/* !! LIKE */}
                     <button
                       className={styles.iconsAddLike}
@@ -75,7 +85,7 @@ const Review = () => {
                     >
                       <div className={styles.likeFalse}>
                         <ion-icon name="heart-outline"></ion-icon>
-                        {i.like.length}
+                        <span>{i.like.length}</span>
                       </div>
                     </button>
                   </div>
@@ -97,11 +107,13 @@ const Review = () => {
             onChange={(e) => setText(e.target.value)}
             onKeyPress={(e) => handleAddEnter(e)}
           ></textarea>
-          <button onClick={handleAddReview}>Добавить</button>
+          <button onClick={handleAddReview} className={styles.addCommBnt}>Добавить</button>
         </div>
       ) : (
         <div>
-          Только авторизованный пользователь может оставлять комментарии.
+          <Link to="/">
+            Только авторизованный пользователь может оставлять комментарии!
+          </Link>
         </div>
       )}
     </div>
