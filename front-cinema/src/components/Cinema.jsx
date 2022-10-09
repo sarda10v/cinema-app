@@ -128,7 +128,6 @@ const Cinema = () => {
             )}
           </div>
         </div>
-
         <div className={styles.cardContent}>
           {!cinemaFilt.length ? ( // !! Блок для рендера карточек фильмов
             <div className={styles.spinner}>
@@ -140,16 +139,13 @@ const Cinema = () => {
             })
           )}
         </div>
-
-        {/* ПАГИНАЦИЯ */}
-        <Pagination />
-
+        {/* ПАГИНАЦИЯ
+        <Pagination /> */}
         {auths ? ( // !! модалка для регистрации
           <div className={styles.authModal}>
             <SignUpModal setAuths={setAuths} setLogins={setLogins} />
           </div>
         ) : null}
-
         {logins ? ( // !! модалка для авторизации
           <div className={styles.loginModal}>
             <SignInModal setLogins={setLogins} setAuths={setAuths} />
