@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import CinemaModal from "./CinemaModal";
-import styles from "../css/CinemaCard.module.css";
+import CinemaModal from "../CinemaModal/CinemaModal";
+import styles from "./CinemaCard.module.css";
 
 const CinemaCard = ({ item }) => {
   const [lgShow, setLgShow] = useState(false);

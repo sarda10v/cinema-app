@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
-import styles from "../css/CinemaModal.module.css";
+import styles from "./CinemaModal.module.css";
 
 const CinemaModal = ({ lgShow, setLgShow, item }) => {
   return (
@@ -11,7 +11,7 @@ const CinemaModal = ({ lgShow, setLgShow, item }) => {
         <li>
           <iframe
             width="560"
-            height="320"
+            height="300"
             src={`${item.trailer}`}
             title="YouTube video player"
             frameBorder="1"

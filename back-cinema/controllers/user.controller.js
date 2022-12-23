@@ -38,12 +38,13 @@ module.exports.usersController = {
 
     const payload = {
       id: candidate._id,
+      login: candidate.login,
     };
 
     const token = await jwt.sign(payload, process.env.SECRET, {
       expiresIn: "48h",
     });
 
-    res.json({ token, id: payload.id });
+    res.json({ token, id: payload.id, login: payload.login });
   },
 };

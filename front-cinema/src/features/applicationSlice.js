@@ -41,6 +41,8 @@ export const authSignIn = createAsyncThunk(
       }
       localStorage.setItem("token", json.token);
       localStorage.setItem("id", json.id);
+      localStorage.setItem("login", json.login);
+
       return json;
     } catch (e) {
       thunkAPI.rejectWithValue(e);
@@ -56,6 +58,7 @@ export const applicationSlice = createSlice({
     signingIn: false,
     token: localStorage.getItem("token"),
     id: localStorage.getItem("id"),
+    login: localStorage.getItem("login"),
   },
   reducers: {},
   extraReducers: (builder) => {

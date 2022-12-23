@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { fetchCinema } from "../features/cinemaSlice";
-import styles from "../css/CinemaSpecific.module.css";
-import Review from "./Review";
+import { fetchCinema } from "../../features/cinemaSlice";
+import styles from "./CinemaSpecific.module.css";
+import Review from "../Review/Review";
 
 const CinemaSpecific = () => {
   const cinema = useSelector((state) => state.cinema.cinema);

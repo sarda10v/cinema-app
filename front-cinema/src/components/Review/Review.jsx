@@ -6,10 +6,10 @@ import {
   deleteReview,
   addLikeInReview,
   removeLikeInReview,
-} from "../features/reviewsSlice";
+} from "../../features/reviewsSlice";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import styles from "../css/Review.module.css";
+import styles from "./Review.module.css";
 
 const Review = () => {
   const reviews = useSelector((state) => state.review.review);
@@ -107,7 +107,9 @@ const Review = () => {
             onChange={(e) => setText(e.target.value)}
             onKeyPress={(e) => handleAddEnter(e)}
           ></textarea>
-          <button onClick={handleAddReview} className={styles.addCommBnt}>Добавить</button>
+          <button onClick={handleAddReview} className={styles.addCommBnt}>
+            Добавить
+          </button>
         </div>
       ) : (
         <div>

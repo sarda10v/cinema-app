@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUsers } from "../features/usersSlice";
-import { authSignUp } from "../features/applicationSlice";
-import styles from "../css/SignModal.module.css";
+import { fetchUsers } from "../../features/usersSlice";
+import { authSignUp } from "../../features/applicationSlice";
+import styles from "./SignModal.module.css";
 
 const SignUpModal = ({ setAuths, setLogins }) => {
   const error = useSelector((state) => state.application.error);

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCinema } from "../features/cinemaSlice";
-import CinemaCard from "./CinemaCard";
-import SignUpModal from "./SignUpModal";
-import SignInModal from "./SignInModal";
-import styles from "../css/Cinema.module.css";
-import Pagination from "./Pagination";
+import { fetchCinema } from "../../features/cinemaSlice";
+import CinemaCard from "../CinemaCard/CinemaCard";
+import SignUpModal from "../Sing/SignUpModal";
+import SignInModal from "../Sing/SignInModal";
+import styles from "./Cinema.module.css";
+import Pagination from "../Pagination/Pagination";
 
 const Cinema = () => {
   const cinema = useSelector((state) => state.cinema.cinema);
@@ -14,7 +14,7 @@ const Cinema = () => {
 
   // !! ФИЛЬТР ПО ВСЕМ КЛЮЧАМ ФИЛЬМА
   const [value, setValue] = useState("");
-  const cinemaFilt = cinema.filter((item) => {
+  const filteredFilms = cinema.filter((item) => {
     let filteredYearsAndNames =
       item.name.toLowerCase().includes(value.toLowerCase().toString()) ||
       item.year.toLowerCase().includes(value.toLowerCase().toString());
@@ -67,16 +67,16 @@ const Cinema = () => {
     window.location.reload(); // для перезагрузки страницы
   };
 
+  const [page, setPage] = useState(1);
   useEffect(() => {
-    dispatch(fetchCinema());
-  }, [dispatch]);
+    dispatch(fetchCinema(page));
+  }, [dispatch, page]);
 
   return (
     <div className={styles.mainWrapperCinema}>
       <div className={styles.card}>
         <div className={styles.tools}>
           <h4>CINEMA</h4>
-
           {/* SEARCH GATE */}
           <div className={styles.search}>
             <ion-icon name="search-outline"></ion-icon>
@@ -108,20 +108,19 @@ const Cinema = () => {
                 onClick={handleOpenModalHeader}
               ></ion-icon>
             )}
-
             {!modal ? null : ( // !! модалка для выбора авторизация/регистрация/выход
               <div className={styles.modalHeaderAuth}>
-                <span>
+                <div className={styles.closeModalAuthBtn}>
                   <ion-icon
                     name="close-circle-outline"
                     onClick={handleCloseModalHeader}
                   ></ion-icon>
-                </span>
+                </div>
                 {!token ? (
-                  <>
+                  <div className={styles.modalAuthBtnHover}>
                     <div onClick={handleOpenModalAuth}>Регистрация</div>
                     <div onClick={handleOpenModalLogin}>Авторизация</div>
-                  </>
+                  </div>
                 ) : null}
                 {token ? <div onClick={handleOpenModalExit}>Выйти</div> : null}
               </div>
@@ -129,18 +128,19 @@ const Cinema = () => {
           </div>
         </div>
         <div className={styles.cardContent}>
-          {!cinemaFilt.length ? ( // !! Блок для рендера карточек фильмов
+          {!filteredFilms.length ? ( // !! Блок для рендера карточек фильмов
             <div className={styles.spinner}>
               <h1>Ничего нет!</h1>
             </div>
           ) : (
-            cinemaFilt.map((item) => {
+            filteredFilms.map((item) => {
               return <CinemaCard item={item} key={item._id} />;
             })
           )}
         </div>
-        {/* ПАГИНАЦИЯ
-        <Pagination /> */}
+        {/* ПАГИНАЦИЯ */}
+        <Pagination page={page} setPage={setPage}/>
+
         {auths ? ( // !! модалка для регистрации
           <div className={styles.authModal}>
             <SignUpModal setAuths={setAuths} setLogins={setLogins} />

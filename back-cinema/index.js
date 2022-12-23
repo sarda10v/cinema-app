@@ -1,24 +1,28 @@
-require("dotenv").config();
-const express = require("express");
 const mongoose = require("mongoose");
+const express = require("express");
+const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
+
+require("dotenv").config();
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, "assets")));
+app.use(morgan("dev"));
+app.use(require("./routes/index"));
 
-mongoose
-  .connect(process.env.SERVER)
+const { PORT, SERVER } = process.env;
 
-app.use(require("./routes/cinema.route"));
-app.use(require("./routes/actor.route"));
-app.use(require("./routes/genre.route"));
-app.use(require("./routes/review.route"));
-app.use(require("./routes/tag.route"));
-app.use(require("./routes/user.route"));
-
-app.listen(process.env.PORT, () => {
-  console.log("Server it's started!");
-});
+const connectAndStartServer = async () => {
+  try {
+    await mongoose.connect(SERVER);
+    app.listen(PORT, () => {
+      console.log("Server it's started!");
+    });
+  } catch (e) {
+    console.log(`Connection error: ${e.toString()}`);
+  }
+};
+connectAndStartServer();
