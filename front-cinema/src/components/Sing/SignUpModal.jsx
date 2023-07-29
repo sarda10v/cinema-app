@@ -26,6 +26,8 @@ const SignUpModal = ({ setAuths, setLogins }) => {
     if (login.trim().length && password.trim().length) {
       dispatch(authSignUp({ login, password }));
       setClearInput(false);
+      setLogins(true);
+      setAuths(false);
     }
   };
 

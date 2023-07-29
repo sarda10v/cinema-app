@@ -121,3 +121,36 @@
   justify-content: center;
   align-items: center;
 }
+
+.avatarWrapper img {
+  width: 40px;
+  height: 40px;
+}
+.userName {
+ font-size: 18px;
+ text-align: center;
+ align-items: center;
+ display: flex;
+}
+/* для откр. модалки при наведении */
+/* .icons {
+  position: relative;
+  }
+ 
+  .popapInform {
+    display: none;
+    padding: 10px;
+    background:#011522;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    border: 1px solid white;
+  }
+ 
+.icons:hover .popapInform {
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  z-index: 9999;
+  min-width: 250px;
+  border-radius: 12px;
+} */
