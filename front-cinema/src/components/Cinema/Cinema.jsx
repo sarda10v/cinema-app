@@ -8,9 +8,11 @@ import styles from "./Cinema.module.css";
 import Pagination from "../Pagination/Pagination";
 import avatarIcon from "../assets/avatar.png";
 import { fetchUsers } from "../../features/usersSlice";
+import Loader from "../Loader/Loader";
 
 const Cinema = () => {
-  const cinema = useSelector((state) => state.cinema.cinema);
+  const cinema = useSelector((state) => state.cinema.cinema); 
+  const loader = useSelector((state) => state.cinema.loader); 
   const token = useSelector((state) => state.application.token);
   const login = useSelector((state) => state.application);
   const users = useSelector((state) => state.users.users);
@@ -147,9 +149,9 @@ const Cinema = () => {
           </div>
         </div>
         <div className={styles.cardContent}>
-          {!filteredFilms.length ? ( // !! Блок для рендера карточек фильмов
+          {!filteredFilms.length || loader ? ( // !! Блок для рендера карточек фильмов
             <div className={styles.spinner}>
-              <h1>Ничего нет!</h1>
+              <Loader/>
             </div>
           ) : (
             filteredFilms.map((item) => {

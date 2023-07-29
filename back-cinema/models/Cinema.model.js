@@ -19,7 +19,6 @@ const cinemaSchema = mongoose.Schema({
   trailer: {
     // !! проверить ключ!
     type: String,
-    required: true,
   },
   actors: [
     {

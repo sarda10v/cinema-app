@@ -63,7 +63,7 @@ export const applicationSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder // !! AUTH
-      .addCase(authSignUp.pending, (state, action) => {
+      .addCase(authSignUp.pending, (state) => {
         state.signingUp = true;
         state.error = null;
       })
@@ -71,11 +71,11 @@ export const applicationSlice = createSlice({
         state.signingUp = false;
         state.error = action.payload;
       })
-      .addCase(authSignUp.fulfilled, (state, action) => {
+      .addCase(authSignUp.fulfilled, (state) => {
         state.signingUp = false;
         state.error = null;
       }) // !! LOGIN
-      .addCase(authSignIn.pending, (state, action) => {
+      .addCase(authSignIn.pending, (state) => {
         state.signingIn = true;
         state.error = null;
       })
@@ -86,8 +86,8 @@ export const applicationSlice = createSlice({
       .addCase(authSignIn.fulfilled, (state, action) => {
         state.signingIn = false;
         state.error = null;
-        state.token = action.payload.token;
-        state.id = action.payload.id;
+        state.token = action.payload?.token;
+        state.id = action.payload?.id;
       });
   },
 });

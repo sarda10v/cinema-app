@@ -1,7 +1,7 @@
 /* !! CINEMA CARD */
 .cardCinema {
-  width: 15%;
-  margin: 5px auto;
+  width: 14%;
+  margin: 10px;
   transition: all 300ms;
   position: relative;
 }
