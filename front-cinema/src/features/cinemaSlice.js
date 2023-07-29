@@ -4,7 +4,9 @@ export const fetchCinema = createAsyncThunk(
   "cinema/fetch",
   async (page, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:4000/cinema?page=${page}&limit=12`);
+      const res = await fetch(
+        `http://localhost:4000/cinema?page=${page}&limit=12`
+      );
       const data = await res.json();
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
@@ -25,9 +27,14 @@ export const cinemaSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchCinema.fulfilled, (state, action) => {
-      state.cinema = action.payload;
-    });
+    builder
+      .addCase(fetchCinema.fulfilled, (state, action) => {
+        state.cinema = action.payload;
+        state.loader = false;
+      })
+      .addCase(fetchCinema.pending, (state, action) => {
+        state.loader = true;
+      });
   },
 });
 

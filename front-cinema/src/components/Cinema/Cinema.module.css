@@ -58,12 +58,13 @@
 }
 
 .cardContent {
-  width: 90%;
+  width: 100%;
   margin: auto;
   flex-wrap: wrap-reverse;
   display: flex;
   background-color: #011522;
   overflow: auto; /*скрол*/
+  justify-content: center;
 }
 .card_content::-webkit-scrollbar,
 .modal-content::-webkit-scrollbar {
@@ -127,10 +128,10 @@
   height: 40px;
 }
 .userName {
- font-size: 18px;
- text-align: center;
- align-items: center;
- display: flex;
+  font-size: 18px;
+  text-align: center;
+  align-items: center;
+  display: flex;
 }
 /* для откр. модалки при наведении */
 /* .icons {

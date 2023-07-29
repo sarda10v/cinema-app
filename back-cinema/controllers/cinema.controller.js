@@ -2,7 +2,7 @@ const Cinema = require("../models/Cinema.model");
 
 module.exports.cinemaController = {
   addCinema: async (req, res) => {
-    const { image, name, description, year, actors, tags, genres, reviews } =
+    const { image, name, description, year, actors, tags, genres, reviews, trailer } =
       req.body;
     try {
       const cinema = await Cinema.create({
@@ -14,6 +14,7 @@ module.exports.cinemaController = {
         tags,
         genres,
         reviews,
+        trailer
       });
       return res.json(cinema);
     } catch (err) {
@@ -31,7 +32,7 @@ module.exports.cinemaController = {
   },
 
   editCinemaById: async (req, res) => {
-    const { image, name, description, year, actors, tags, genres, reviews } =
+    const { image, name, description, year, actors, tags, genres, reviews, trailer } =
       req.body;
 
     try {
@@ -44,6 +45,7 @@ module.exports.cinemaController = {
         tags,
         genres,
         reviews,
+        trailer
       });
       return res.json(cinema);
     } catch (err) {
