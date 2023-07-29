@@ -6,11 +6,18 @@ import SignUpModal from "../Sing/SignUpModal";
 import SignInModal from "../Sing/SignInModal";
 import styles from "./Cinema.module.css";
 import Pagination from "../Pagination/Pagination";
+import avatarIcon from "../assets/avatar.png";
+import { fetchUsers } from "../../features/usersSlice";
 
 const Cinema = () => {
   const cinema = useSelector((state) => state.cinema.cinema);
   const token = useSelector((state) => state.application.token);
+  const login = useSelector((state) => state.application);
+  const users = useSelector((state) => state.users.users);
+
   const dispatch = useDispatch();
+
+  const userName = users.filter((user) => user._id === login.id);
 
   // !! ФИЛЬТР ПО ВСЕМ КЛЮЧАМ ФИЛЬМА
   const [value, setValue] = useState("");
@@ -70,6 +77,7 @@ const Cinema = () => {
   const [page, setPage] = useState(1);
   useEffect(() => {
     dispatch(fetchCinema(page));
+    dispatch(fetchUsers());
   }, [dispatch, page]);
 
   return (
@@ -95,13 +103,24 @@ const Cinema = () => {
           </div>
 
           <div className={styles.icons}>
+            <div className={styles.userName}>
+              {userName.map((i) => i.login)}
+            </div>
+
             {token ? (
               // !! если пользователь авторизован
-              <ion-icon
-                name="person-circle-outline"
+              <div
+                className={styles.avatarWrapper}
                 onClick={handleOpenModalHeader}
-              ></ion-icon>
+              >
+                <img src={avatarIcon} alt="avatar" />
+              </div>
             ) : (
+              // дефолтная иконка
+              // <ion-icon
+              //   name="person-circle-outline"
+              //   onClick={handleOpenModalHeader}
+              // ></ion-icon>
               // !! если пользователь не авторизован
               <ion-icon
                 name="filter-circle-outline"
@@ -139,7 +158,7 @@ const Cinema = () => {
           )}
         </div>
         {/* ПАГИНАЦИЯ */}
-        <Pagination page={page} setPage={setPage}/>
+        <Pagination page={page} setPage={setPage} />
 
         {auths ? ( // !! модалка для регистрации
           <div className={styles.authModal}>

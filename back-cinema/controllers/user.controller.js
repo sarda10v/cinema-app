@@ -45,6 +45,6 @@ module.exports.usersController = {
       expiresIn: "48h",
     });
 
-    res.json({ token, id: payload.id, login: payload.login });
+    res.json({ token, id: payload.id, login: payload.login});
   },
 };
