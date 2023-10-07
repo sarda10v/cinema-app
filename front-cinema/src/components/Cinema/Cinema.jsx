@@ -9,10 +9,11 @@ import Pagination from "../Pagination/Pagination";
 import avatarIcon from "../assets/avatar.png";
 import { fetchUsers } from "../../features/usersSlice";
 import Loader from "../Loader/Loader";
+import useSearchCinema from "../hooks/use-search-cinema";
 
 const Cinema = () => {
-  const cinema = useSelector((state) => state.cinema.cinema); 
-  const loader = useSelector((state) => state.cinema.loader); 
+  const cinema = useSelector((state) => state.cinema.cinema);
+  const loader = useSelector((state) => state.cinema.loader);
   const token = useSelector((state) => state.application.token);
   const login = useSelector((state) => state.application);
   const users = useSelector((state) => state.users.users);
@@ -23,27 +24,7 @@ const Cinema = () => {
 
   // !! ФИЛЬТР ПО ВСЕМ КЛЮЧАМ ФИЛЬМА
   const [value, setValue] = useState("");
-  const filteredFilms = cinema.filter((item) => {
-    let filteredYearsAndNames =
-      item.name.toLowerCase().includes(value.toLowerCase().toString()) ||
-      item.year.toLowerCase().includes(value.toLowerCase().toString());
-    let filteredGenres = item.genres.filter((i) =>
-      i.genres.toLowerCase().includes(value.toLowerCase().toString())
-    );
-    let filteredTags = item.tags.filter((i) =>
-      i.tags.toLowerCase().includes(value.toLowerCase().toString())
-    );
-    let filteredActors = item.actors.filter((i) =>
-      i.fullname.toLowerCase().includes(value.toLowerCase().toString())
-    );
-    let allFilters =
-      filteredYearsAndNames ||
-      filteredGenres.length ||
-      filteredActors.length ||
-      filteredTags.length;
-
-    return allFilters;
-  });
+  const filteredCinema = useSearchCinema(cinema, value);
 
   // !! МОДАЛКА ДЛЯ ВЫБОРА: АВТОРИЗАЦИЯ/РЕГИСТРАЦИЯ/ВЫХОД
   const [modal, setModal] = useState(false);
@@ -149,12 +130,12 @@ const Cinema = () => {
           </div>
         </div>
         <div className={styles.cardContent}>
-          {!filteredFilms.length || loader ? ( // !! Блок для рендера карточек фильмов
+          {!filteredCinema.length || loader ? ( // !! Блок для рендера карточек фильмов
             <div className={styles.spinner}>
-              <Loader/>
+              <Loader />
             </div>
           ) : (
-            filteredFilms.map((item) => {
+            filteredCinema.map((item) => {
               return <CinemaCard item={item} key={item._id} />;
             })
           )}
