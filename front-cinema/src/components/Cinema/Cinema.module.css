@@ -20,22 +20,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  border: 1px solid blue;
+
 }
 .tools h4 {
   font-weight: 700;
   font-size: 30px;
 }
-.search {
-  width: 45%;
-  background-color: #fff;
-  border-radius: 8px;
-  color: black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 18px;
-  padding: 5px 15px;
-}
+
 .tools input {
   width: 100%;
   background-color: transparent;
@@ -122,10 +114,16 @@
   justify-content: center;
   align-items: center;
 }
-
+.avatarWrapper {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
 .avatarWrapper img {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
+
 }
 .userName {
   font-size: 18px;

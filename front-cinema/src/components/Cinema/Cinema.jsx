@@ -5,11 +5,16 @@ import CinemaCard from "../CinemaCard/CinemaCard";
 import SignUpModal from "../Sing/SignUpModal";
 import SignInModal from "../Sing/SignInModal";
 import styles from "./Cinema.module.css";
-import Pagination from "../Pagination/Pagination";
-import avatarIcon from "../assets/avatar.png";
+import avatarIcon from "../../assets/avatar.jpg";
 import { fetchUsers } from "../../features/usersSlice";
 import Loader from "../Loader/Loader";
 import useSearchCinema from "../hooks/use-search-cinema";
+
+import { Avatar } from "../../widgets/Avatar";
+import { Title } from "../../widgets/Title";
+import { Logo } from "../../widgets/Logo";
+import { Input } from "../../widgets/Input";
+import { Pagination } from "../../widgets/Pagination";
 
 const Cinema = () => {
   const cinema = useSelector((state) => state.cinema.cinema);
@@ -67,49 +72,18 @@ const Cinema = () => {
     <div className={styles.mainWrapperCinema}>
       <div className={styles.card}>
         <div className={styles.tools}>
-          <h4>CINEMA</h4>
-          {/* SEARCH GATE */}
-          <div className={styles.search}>
-            <ion-icon name="search-outline"></ion-icon>
-            <input
-              type="text"
-              placeholder="Поиск фильма, по названию, по жанрам, по актерам, по тегам, по годам..."
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-            />
-            {value ? (
-              <ion-icon
-                onClick={() => setValue("")}
-                name="close-outline"
-              ></ion-icon>
-            ) : null}
-          </div>
+          <Logo title="CINEMA" />
+
+          <Input value={value} setValue={setValue} />
 
           <div className={styles.icons}>
-            <div className={styles.userName}>
-              {userName.map((i) => i.login)}
-            </div>
+            <Title text={userName.map((i) => i.login)} />
 
-            {token ? (
-              // !! если пользователь авторизован
-              <div
-                className={styles.avatarWrapper}
-                onClick={handleOpenModalHeader}
-              >
-                <img src={avatarIcon} alt="avatar" />
-              </div>
-            ) : (
-              // дефолтная иконка
-              // <ion-icon
-              //   name="person-circle-outline"
-              //   onClick={handleOpenModalHeader}
-              // ></ion-icon>
-              // !! если пользователь не авторизован
-              <ion-icon
-                name="filter-circle-outline"
-                onClick={handleOpenModalHeader}
-              ></ion-icon>
-            )}
+            <Avatar
+              url={token ? avatarIcon : null}
+              handleOpenModal={handleOpenModalHeader}
+            />
+
             {!modal ? null : ( // !! модалка для выбора авторизация/регистрация/выход
               <div className={styles.modalHeaderAuth}>
                 <div className={styles.closeModalAuthBtn}>

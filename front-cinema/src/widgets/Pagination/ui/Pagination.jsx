@@ -1,17 +1,18 @@
 import React from "react";
-import styles from "./Pagination.module.css";
-const Pagination = ({ page, setPage }) => {
+import cls from "./Pagination.module.css";
+
+export const Pagination = ({ page, setPage }) => {
   return (
-    <div className={styles.pagination}>
+    <div className={cls.pagination}>
       <button
-        className={styles.paginationBtn}
+        className={cls.button}
         disabled={page === 1}
         onClick={() => setPage((page) => page - 1)}
       >
         ⯇
       </button>
       <button
-        className={styles.paginationBtn}
+        className={cls.button}
         disabled={page === 2}
         onClick={() => setPage((page) => page + 1)}
       >
@@ -20,5 +21,3 @@ const Pagination = ({ page, setPage }) => {
     </div>
   );
 };
-
-export default Pagination;

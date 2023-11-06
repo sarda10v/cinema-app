@@ -1,0 +1,11 @@
+.input {
+  width: 45%;
+  background-color: #fff;
+  border-radius: 8px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  padding: 5px 15px;
+}

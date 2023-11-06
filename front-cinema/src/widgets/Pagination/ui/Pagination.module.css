@@ -6,7 +6,7 @@
   background-color: #011522;
 }
 
-.paginationBtn {
+.button {
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -16,14 +16,14 @@
   transition: 0.5s;
 }
 
-.paginationBtn:hover {
+.button:hover {
   background-color: #01243b;
 }
 
-.paginationBtn:disabled {
+.button:disabled {
   background-color: rgb(70, 70, 70);
 }
 
-.paginationBtn:disabled:hover {
+.button:disabled:hover {
   background-color: rgb(70, 70, 70);
 }
