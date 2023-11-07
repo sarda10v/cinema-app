@@ -13,15 +13,15 @@
   color: white;
 }
 
-.tools {
-  width: 95%;
+.header {
+  width: 100%;
+  height: 60px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
   border: 1px solid blue;
-
 }
 .tools h4 {
   font-weight: 700;
@@ -51,12 +51,14 @@
 
 .cardContent {
   width: 100%;
+  height: calc(100vh - 60px);
   margin: auto;
   flex-wrap: wrap-reverse;
   display: flex;
   background-color: #011522;
   overflow: auto; /*скрол*/
   justify-content: center;
+  border: 1px solid red;
 }
 .card_content::-webkit-scrollbar,
 .modal-content::-webkit-scrollbar {
@@ -107,13 +109,6 @@
   z-index: 9999;
 }
 
-.spinner {
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .avatarWrapper {
   border-radius: 50%;
   width: 40px;
@@ -123,7 +118,6 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-
 }
 .userName {
   font-size: 18px;

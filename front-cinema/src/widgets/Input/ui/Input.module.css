@@ -1,11 +1,20 @@
-.input {
-  width: 45%;
-  background-color: #fff;
-  border-radius: 8px;
+.wrapper {
+  background-color: white;
   color: black;
+  border-radius: 8px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  width: 35%;
   font-size: 18px;
-  padding: 5px 15px;
+  padding: 5px 10px;
+  gap: 8px;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
 }

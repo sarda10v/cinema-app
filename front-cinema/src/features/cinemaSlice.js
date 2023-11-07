@@ -22,7 +22,6 @@ export const cinemaSlice = createSlice({
   name: "cinema",
   initialState: {
     cinema: [],
-    cinemaFilt: [],
     loader: false,
   },
   reducers: {},
