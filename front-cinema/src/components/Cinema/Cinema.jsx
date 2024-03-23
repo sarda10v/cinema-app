@@ -8,48 +8,35 @@ import cls from "./Cinema.module.css";
 import avatarIcon from "../../assets/avatar.jpg";
 import { fetchUsers } from "../../features/usersSlice";
 import Loader from "../../widgets/Loader/Loader";
-import useSearchCinema from '../../hooks/use-search-cinema'
+import useSearchCinema from "../../hooks/use-search-cinema";
 import { Avatar } from "../../widgets/Avatar";
-// import { Title } from "../../widgets/Title";
 import { Logo } from "../../widgets/Logo";
 import { Input } from "../../widgets/Input";
+import { LOGO_NAME, getUserName } from "../utils/utils";
 // import { Pagination } from "../../widgets/Pagination";
-import { Icon } from "../../widgets/Icon";
 
 const Cinema = () => {
-  const cinema = useSelector((state) => state.cinema.cinema);
-  const loader = useSelector((state) => state.cinema.loader);
+  const { cinema, loader } = useSelector((state) => state.cinema);
   const token = useSelector((state) => state.application.token);
   const login = useSelector((state) => state.application);
   const users = useSelector((state) => state.users.users);
 
   const dispatch = useDispatch();
-
-  const userName = users.filter((user) => user._id === login.id);
+  const userName = getUserName(users, login);
 
   // !! ФИЛЬТР ПО ВСЕМ КЛЮЧАМ ФИЛЬМА
   const [value, setValue] = useState("");
-
 
   const filteredCinema = useSearchCinema(cinema, value);
 
   // !! МОДАЛКА ДЛЯ ВЫБОРА: АВТОРИЗАЦИЯ/РЕГИСТРАЦИЯ/ВЫХОД
   const [modal, setModal] = useState(false);
   const handleOpenModalHeader = () => {
-    setModal(true);
-  };
-  const handleCloseModalHeader = () => {
-    setModal(false);
+    setModal(!modal);
   };
 
   // !! МОДАЛКА ДЛЯ РЕГИСТРАЦИИ
   const [auths, setAuths] = useState(false);
-  const handleOpenModalAuth = () => {
-    setModal(false);
-    setLogins(false);
-    setAuths(true);
-  };
-
   // !! МОДАЛКА ДЛЯ АВТОРИЗАЦИИ
   const [logins, setLogins] = useState(false);
   const handleOpenModalLogin = () => {
@@ -74,32 +61,69 @@ const Cinema = () => {
     <div className={cls.mainWrapperCinema}>
       <div className={cls.card}>
         <header className={cls.header}>
-          <Logo title="CINEMA" />
+          <Logo title={LOGO_NAME} />
           <Input value={value} setValue={setValue} />
 
           <div className={cls.icons}>
-            {/* <Title text={userName.map((i) => i.login)} /> */}
-
             <Avatar
               url={token ? avatarIcon : null}
               handleOpenModal={handleOpenModalHeader}
             />
 
-            {!modal ? null : ( // !! модалка для выбора авторизация/регистрация/выход
+            {!modal ? null : (
               <div className={cls.modalHeaderAuth}>
-                <div className={cls.closeModalAuthBtn}>
-                  <Icon
-                    name="close-circle-outline"
-                    onClick={handleCloseModalHeader}
-                  />
-                </div>
                 {!token ? (
                   <div className={cls.modalAuthBtnHover}>
-                    <div onClick={handleOpenModalAuth}>Регистрация</div>
-                    <div onClick={handleOpenModalLogin}>Авторизация</div>
+                    <div
+                      className={cls.modalAuthBtn}
+                      onClick={handleOpenModalLogin}
+                    >
+                      <ion-icon
+                        className={cls.authIcon}
+                        name="log-in-outline"
+                      ></ion-icon>
+                      <span>Войти</span>
+                    </div>
                   </div>
                 ) : null}
-                {token ? <div onClick={handleOpenModalExit}>Выйти</div> : null}
+                {token ? (
+                  <>
+                    <div className={cls.modalUsernameBtn}>
+                      <ion-icon name="person-outline"></ion-icon>
+                      <span>{userName.map((i) => i.login)}</span>
+                    </div>
+                    <hr className={cls.hr} />
+
+                    <div className={cls.modalUserOnlineBtn}>
+                      <ion-icon name="ellipse"></ion-icon>
+                      <span>В сети</span>
+                    </div>
+                    <div className={cls.modalUserInactiveBtn}>
+                      <ion-icon name="ellipse"></ion-icon>
+                      <span>Неактивен</span>
+                    </div>
+                    <div className={cls.modalUserInvisibleBtn}>
+                      <ion-icon name="ellipse"></ion-icon>
+                      <span>Невидимый</span>
+                    </div>
+                    <hr className={cls.hr} />
+                    <div className={cls.modalFavoritesBtn}>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <span>Избранное</span>
+                    </div>
+                    <div className={cls.modalSettingsBtn}>
+                      <ion-icon name="settings-outline"></ion-icon>
+                      <span>Настройки</span>
+                    </div>
+                    <div
+                      className={cls.modalExitBtn}
+                      onClick={handleOpenModalExit}
+                    >
+                      <ion-icon name="exit-outline"></ion-icon>
+                      <span>Выйти</span>
+                    </div>
+                  </>
+                ) : null}
               </div>
             )}
           </div>

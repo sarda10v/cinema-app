@@ -7,10 +7,10 @@
 }
 .card {
   width: 100%;
-  background-color: #011522 !important;
+  background-color: var(--color-darkblue) !important;
   height: 100vh;
   z-index: 1;
-  color: white;
+  color: var(--color-white);
 }
 
 .header {
@@ -21,8 +21,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  border: 1px solid blue;
+  border-bottom: 1px solid var(--color-white);
 }
+
 .tools h4 {
   font-weight: 700;
   font-size: 30px;
@@ -46,7 +47,7 @@
   cursor: pointer;
   display: flex;
   gap: 5px;
-  position: relative;
+  position: var(--position-relative);
 }
 
 .cardContent {
@@ -55,10 +56,9 @@
   margin: auto;
   flex-wrap: wrap-reverse;
   display: flex;
-  background-color: #011522;
+  background-color: var(--color-darkblue);
   overflow: auto; /*скрол*/
   justify-content: center;
-  border: 1px solid red;
 }
 .card_content::-webkit-scrollbar,
 .modal-content::-webkit-scrollbar {
@@ -66,44 +66,66 @@
 }
 .card_content::-webkit-scrollbar-track,
 .modal-content::-webkit-scrollbar-track {
-  background: #011522; /* цвет зоны отслеживания */
+  background: var(--color-darkblue); /* цвет зоны отслеживания */
 }
 .card_content::-webkit-scrollbar-thumb,
 .modal-content::-webkit-scrollbar-thumb {
-  background-color: #4f4f4f; /* цвет бегунка */
+  background-color: var(--color-gray); /* цвет бегунка */
   border-radius: 20px; /* округлось бегунка */
 }
 /* !! MODAL AUTH/CONFIG */
 .modalHeaderAuth {
-  width: 150px;
-  max-height: 150px;
-  background-color: #011522;
-  position: absolute;
-  border: 1px solid #fff;
+  background-color: var(--color-darkblue);
+  position: var(--position-absolute);
+  border: 1px solid var(--color-white);
   border-radius: 8px;
-  z-index: 9999;
-  top: 10px;
+  z-index: 9;
+  top: 57px;
   right: 10px;
   font-size: 20px;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
+
+  cursor: pointer;
 }
 .modalHeaderAuth div {
   width: 100%;
   transition: 250ms;
 }
-.modalAuthBtnHover div:hover {
-  background-color: #fff;
-  color: black;
+.modalAuthBtnHover div:hover,
+.modalExitBtn:hover,
+.modalAuthBtn:hover,
+.modalFavoritesBtn:hover,
+.modalUserOnlineBtn:hover,
+.modalUserInactiveBtn:hover,
+.modalUserInvisibleBtn:hover,
+.modalSettingsBtn:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
 }
 .closeModalAuthBtn {
   display: flex;
   justify-content: flex-end;
 }
 
+.modalExitBtn,
+.modalAuthBtn,
+.modalUsernameBtn,
+.modalFavoritesBtn,
+.modalUserOnlineBtn,
+.modalUserInactiveBtn,
+.modalUserInvisibleBtn,
+.modalSettingsBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px;
+  border-radius: 8px;
+}
+
 .authModal,
 .loginModal {
-  position: absolute;
+  position: var(--position-absolute);
   left: 35%;
   top: 25%;
   z-index: 9999;
@@ -127,23 +149,37 @@
 }
 /* для откр. модалки при наведении */
 /* .icons {
-  position: relative;
+  position: var(--position-relative);
   }
  
   .popapInform {
     display: none;
     padding: 10px;
-    background:#011522;
+    background: var(--color-darkblue);
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-    border: 1px solid white;
+    border: 1px solid var(--color-white);
   }
  
 .icons:hover .popapInform {
   display: block;
-  position: absolute;
+  position: var(--position-absolute);
   top: 100%;
   right: 0%;
   z-index: 9999;
   min-width: 250px;
   border-radius: 12px;
 } */
+
+.hr {
+  margin: 5px 0;
+}
+
+.modalUserOnlineBtn ion-icon {
+  color: var(--color-green);
+}
+.modalUserInactiveBtn ion-icon {
+  color: var(--color-red);
+}
+.modalUserInvisibleBtn ion-icon {
+  color: var(--color-gray);
+}
