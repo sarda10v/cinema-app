@@ -8,7 +8,7 @@
 
 .loader {
   display: flex;
-  position: relative;
+  position: var(--position-relative);
   justify-items: center;
   align-items: center;
   gap: 1rem;
@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   height: 200px;
-  position: relative;
+  position: var(--position-relative);
   align-items: center;
 }
 
@@ -30,7 +30,7 @@
   display: flex;
   gap: 1rem;
   flex-direction: column;
-  position: absolute;
+  position: var(--position-absolute);
   width: 100%;
   transform-origin: center;
   animation-delay: 2s;
@@ -58,11 +58,11 @@
 }
 
 .love {
-  background: #06263b;
+  background: var(--color-darkblue);
   display: flex;
   width: 30px;
   height: 30px;
-  position: relative;
+  position: var(--position-relative);
   align-items: center;
   justify-content: center;
   left: 8px;
@@ -74,11 +74,11 @@
 .love::before,
 .love::after {
   content: "";
-  position: absolute;
+  position: var(--position-absolute);
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #06263b;
+  background: var(--color-darkblue);
 }
 
 .love::before {
@@ -93,7 +93,7 @@
   display: flex;
   width: 100%;
   height: 55px;
-  position: relative;
+  position: var(--position-relative);
   align-items: center;
   justify-content: center;
   animation: rotation 3s infinite ease-in-out;
@@ -103,8 +103,8 @@
 .death:after {
   content: "";
   height: 63px;
-  position: absolute;
-  border-left: 12px solid #06263b;
+  position: var(--position-absolute);
+  border-left: 12px solid var(--color-darkblue);
   transform: rotate(45deg);
   border-radius: 8px;
   top: -4px;
@@ -113,8 +113,8 @@
 .death:before {
   content: "";
   height: 60px;
-  position: absolute;
-  border-left: 12px solid #06263b;
+  position: var(--position-absolute);
+  border-left: 12px solid var(--color-darkblue);
   transform: rotate(-45deg);
 }
 
@@ -127,7 +127,7 @@
   width: 100%;
   height: 55px;
   justify-content: space-between;
-  background-color: #06263b;
+  background-color: var(--color-darkblue);
   border-radius: 8px;
   padding: 8px;
   animation-delay: 5s;
@@ -139,7 +139,7 @@
   height: 12px;
   top: 0;
   left: 0;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   border-radius: 50%;
   animation-delay: 2s;
   animation: blink 0.5s 2 forwards;
@@ -151,7 +151,7 @@
   height: 12px;
   top: 0;
   left: 0;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   border-radius: 50%;
   animation-delay: 2s;
   animation: blink 0.5s 2 forwards;

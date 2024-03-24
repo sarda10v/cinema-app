@@ -1,13 +1,13 @@
 .wrapper {
-  background-color: white;
-  color: black;
+  background-color: var(--color-white);
+  color: var(--color-black);
   border-radius: 8px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  width: 35%;
+  width: 100%;
   font-size: 18px;
   padding: 5px 10px;
   gap: 8px;
@@ -17,4 +17,8 @@
   width: 100%;
   border: none;
   outline: none;
+}
+
+.clearBtn {
+  cursor: pointer;
 }

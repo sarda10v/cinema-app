@@ -1,9 +1,106 @@
 .header {
-    border: 1px solid red;
-    width: 100%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
+  width: 100%;
+  height: 60px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid var(--color-white);
+  position: var(--position-fixed);
+  z-index: 9;
+  background-color: var(--color-darkblue);
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: end;
+  width: 48%;
+  gap: 8px;
+}
+.searchBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-default);
+  background-color: var(--color-darkblue);
+}
+
+.modalHeaderAuth {
+  background-color: var(--color-darkblue);
+  position: var(--position-absolute);
+  border: 1px solid var(--color-white);
+  border-radius: 8px;
+  z-index: 9;
+  top: 57px;
+  right: 10px;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+
+  cursor: pointer;
+}
+.modalHeaderAuth div {
+  width: 100%;
+  transition: 250ms;
+}
+.modalAuthBtnHover div:hover,
+.modalExitBtn:hover,
+.modalAuthBtn:hover,
+.modalFavoritesBtn:hover,
+.modalUserOnlineBtn:hover,
+.modalUserInactiveBtn:hover,
+.modalUserInvisibleBtn:hover,
+.modalSettingsBtn:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+.closeModalAuthBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modalExitBtn,
+.modalAuthBtn,
+.modalUsernameBtn,
+.modalFavoritesBtn,
+.modalUserOnlineBtn,
+.modalUserInactiveBtn,
+.modalUserInvisibleBtn,
+.modalSettingsBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.avatarWrapper {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+.avatarWrapper img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.userName {
+  font-size: 18px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+}
+
+.hr {
+  margin: 5px 0;
+}
+
+.modalUserOnlineBtn ion-icon {
+  color: var(--color-green);
+}
+.modalUserInactiveBtn ion-icon {
+  color: var(--color-red);
+}
+.modalUserInvisibleBtn ion-icon {
+  color: var(--color-gray);
 }

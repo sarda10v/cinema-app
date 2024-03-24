@@ -1,4 +1,8 @@
-const useSearchCinema = (films, query) => {
+export const getUserName = (users, login) =>
+  users.filter((user) => user._id === login.id).map((i) => i.login);
+
+// фильтрация по фильмам
+export const useSearchCinema = (films, query) => {
   return films.filter((item) => {
     let filteredYearsAndNames =
       item.name.toLowerCase().includes(query.toLowerCase().toString()) ||
@@ -21,4 +25,3 @@ const useSearchCinema = (films, query) => {
     return allFilters;
   });
 };
-export default useSearchCinema;

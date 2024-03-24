@@ -1,5 +1,4 @@
-/*!! CINEMA */
-.mainWrapperCinema {
+.wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -7,22 +6,12 @@
 }
 .card {
   width: 100%;
-  background-color: #011522 !important;
+  background-color: var(--color-darkblue) !important;
   height: 100vh;
   z-index: 1;
-  color: white;
+  color: var(--color-white);
 }
 
-.header {
-  width: 100%;
-  height: 60px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  border: 1px solid blue;
-}
 .tools h4 {
   font-weight: 700;
   font-size: 30px;
@@ -46,104 +35,30 @@
   cursor: pointer;
   display: flex;
   gap: 5px;
-  position: relative;
+  position: var(--position-relative);
 }
 
 .cardContent {
   width: 100%;
-  height: calc(100vh - 60px);
-  margin: auto;
+  margin-top: 60px;
   flex-wrap: wrap-reverse;
   display: flex;
-  background-color: #011522;
+  background-color: var(--color-darkblue);
   overflow: auto; /*скрол*/
   justify-content: center;
-  border: 1px solid red;
 }
+
 .card_content::-webkit-scrollbar,
 .modal-content::-webkit-scrollbar {
   width: 7px; /* ширина всей полосы прокрутки */
 }
 .card_content::-webkit-scrollbar-track,
 .modal-content::-webkit-scrollbar-track {
-  background: #011522; /* цвет зоны отслеживания */
+  background: var(--color-darkblue); /* цвет зоны отслеживания */
 }
 .card_content::-webkit-scrollbar-thumb,
 .modal-content::-webkit-scrollbar-thumb {
-  background-color: #4f4f4f; /* цвет бегунка */
+  background-color: var(--color-gray); /* цвет бегунка */
   border-radius: 20px; /* округлось бегунка */
 }
-/* !! MODAL AUTH/CONFIG */
-.modalHeaderAuth {
-  width: 150px;
-  max-height: 150px;
-  background-color: #011522;
-  position: absolute;
-  border: 1px solid #fff;
-  border-radius: 8px;
-  z-index: 9999;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  text-align: center;
-  padding: 10px;
-}
-.modalHeaderAuth div {
-  width: 100%;
-  transition: 250ms;
-}
-.modalAuthBtnHover div:hover {
-  background-color: #fff;
-  color: black;
-}
-.closeModalAuthBtn {
-  display: flex;
-  justify-content: flex-end;
-}
 
-.authModal,
-.loginModal {
-  position: absolute;
-  left: 35%;
-  top: 25%;
-  z-index: 9999;
-}
-
-.avatarWrapper {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-}
-.avatarWrapper img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-.userName {
-  font-size: 18px;
-  text-align: center;
-  align-items: center;
-  display: flex;
-}
-/* для откр. модалки при наведении */
-/* .icons {
-  position: relative;
-  }
- 
-  .popapInform {
-    display: none;
-    padding: 10px;
-    background:#011522;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-    border: 1px solid white;
-  }
- 
-.icons:hover .popapInform {
-  display: block;
-  position: absolute;
-  top: 100%;
-  right: 0%;
-  z-index: 9999;
-  min-width: 250px;
-  border-radius: 12px;
-} */

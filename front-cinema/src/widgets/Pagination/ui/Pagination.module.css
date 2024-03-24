@@ -3,27 +3,27 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
-  background-color: #011522;
+  background-color: var(--color-darkblue);
 }
 
 .button {
   width: 40px;
   height: 40px;
   background-color: transparent;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
   border-radius: 50%;
   transition: 0.5s;
 }
 
 .button:hover {
-  background-color: #01243b;
+  background-color: var(--color-darkblue);
 }
 
 .button:disabled {
-  background-color: rgb(70, 70, 70);
+  background-color: var(--color-gray);
 }
 
 .button:disabled:hover {
-  background-color: rgb(70, 70, 70);
+  background-color: var(--color-gray);
 }
