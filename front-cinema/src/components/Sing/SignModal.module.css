@@ -15,6 +15,9 @@
 .divFlex input {
   width: 100%;
   margin: 5px auto;
+  padding: 5px;
+  font-size: var(--font-size-medium);
+  border-radius: var(--border-radius-default);
 }
 
 .wrapperBtn {
@@ -23,5 +26,4 @@
 
 .btn {
   text-align: center;
-  background-color: red;
 }

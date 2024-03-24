@@ -5,7 +5,7 @@ import { fetchUsers } from "../../features/usersSlice";
 
 import { useSearchCinema } from "../utils/utils";
 import { Header } from "../Header/Header";
-import { Pagination } from "../../widgets/Pagination";
+// import { Pagination } from "../../widgets/Pagination";
 import { logout } from "../../features/applicationSlice";
 import { Modal } from "../../widgets/Modal/ui/Modal";
 
@@ -68,7 +68,7 @@ export const Cinema = () => {
             })
           )}
         </div>
-        <Pagination page={page} setPage={setPage} />
+        {/* <Pagination page={page} setPage={setPage} /> */}
         <Modal
           auths={auths}
           logins={logins}

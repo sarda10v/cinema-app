@@ -18,17 +18,23 @@
   --font-size-medium: 16px;
   --font-size-large: 20px;
 
-  /* position */
+  /* positions */
   --position-relative: relative;
   --position-absolute: absolute;
   --position-fixed: fixed;
   --position-static: static;
 
-  /* border */
+  /* borders */
   --border-radius-default: 8px;
   --border-radius-small: 5px;
   --border-radius-medium: 10px;
   --border-radius-large: 20px;
+
+  /* z-index */
+  --z-index-fixed: 1;
+  --z-index-modal: 10;
+  --z-index-overlay: 100;
+
 }
 
 * {

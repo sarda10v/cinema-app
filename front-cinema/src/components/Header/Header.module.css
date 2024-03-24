@@ -15,7 +15,7 @@
 .searchWrapper {
   display: flex;
   justify-content: end;
-  width: 45%;
+  width: 48%;
   gap: 8px;
 }
 .searchBtn {

@@ -40,12 +40,14 @@ const SignInModal = ({ setLogins, setAuths }) => {
         <input
           type="text"
           value={login}
+          className={cls.input}
           onChange={handleSetName}
           placeholder="Ваш логин"
         />
         <input
           type="password"
           value={password}
+          className={cls.input}
           onChange={handleSetPass}
           placeholder="Ваш пароль"
         />

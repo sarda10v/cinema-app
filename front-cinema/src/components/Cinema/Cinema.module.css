@@ -40,8 +40,7 @@
 
 .cardContent {
   width: 100%;
-  height: calc(100vh - 60px);
-  margin: auto;
+  margin-top: 60px;
   flex-wrap: wrap-reverse;
   display: flex;
   background-color: var(--color-darkblue);
