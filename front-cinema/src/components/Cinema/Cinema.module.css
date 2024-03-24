@@ -1,5 +1,4 @@
-/*!! CINEMA */
-.mainWrapperCinema {
+.wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -11,17 +10,6 @@
   height: 100vh;
   z-index: 1;
   color: var(--color-white);
-}
-
-.header {
-  width: 100%;
-  height: 60px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid var(--color-white);
 }
 
 .tools h4 {
@@ -60,6 +48,7 @@
   overflow: auto; /*скрол*/
   justify-content: center;
 }
+
 .card_content::-webkit-scrollbar,
 .modal-content::-webkit-scrollbar {
   width: 7px; /* ширина всей полосы прокрутки */
@@ -73,113 +62,4 @@
   background-color: var(--color-gray); /* цвет бегунка */
   border-radius: 20px; /* округлось бегунка */
 }
-/* !! MODAL AUTH/CONFIG */
-.modalHeaderAuth {
-  background-color: var(--color-darkblue);
-  position: var(--position-absolute);
-  border: 1px solid var(--color-white);
-  border-radius: 8px;
-  z-index: 9;
-  top: 57px;
-  right: 10px;
-  font-size: 20px;
-  text-align: center;
-  padding: 5px;
 
-  cursor: pointer;
-}
-.modalHeaderAuth div {
-  width: 100%;
-  transition: 250ms;
-}
-.modalAuthBtnHover div:hover,
-.modalExitBtn:hover,
-.modalAuthBtn:hover,
-.modalFavoritesBtn:hover,
-.modalUserOnlineBtn:hover,
-.modalUserInactiveBtn:hover,
-.modalUserInvisibleBtn:hover,
-.modalSettingsBtn:hover {
-  background-color: var(--color-white);
-  color: var(--color-black);
-}
-.closeModalAuthBtn {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.modalExitBtn,
-.modalAuthBtn,
-.modalUsernameBtn,
-.modalFavoritesBtn,
-.modalUserOnlineBtn,
-.modalUserInactiveBtn,
-.modalUserInvisibleBtn,
-.modalSettingsBtn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px;
-  border-radius: 8px;
-}
-
-.authModal,
-.loginModal {
-  position: var(--position-absolute);
-  left: 35%;
-  top: 25%;
-  z-index: 9999;
-}
-
-.avatarWrapper {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-}
-.avatarWrapper img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-.userName {
-  font-size: 18px;
-  text-align: center;
-  align-items: center;
-  display: flex;
-}
-/* для откр. модалки при наведении */
-/* .icons {
-  position: var(--position-relative);
-  }
- 
-  .popapInform {
-    display: none;
-    padding: 10px;
-    background: var(--color-darkblue);
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--color-white);
-  }
- 
-.icons:hover .popapInform {
-  display: block;
-  position: var(--position-absolute);
-  top: 100%;
-  right: 0%;
-  z-index: 9999;
-  min-width: 250px;
-  border-radius: 12px;
-} */
-
-.hr {
-  margin: 5px 0;
-}
-
-.modalUserOnlineBtn ion-icon {
-  color: var(--color-green);
-}
-.modalUserInactiveBtn ion-icon {
-  color: var(--color-red);
-}
-.modalUserInvisibleBtn ion-icon {
-  color: var(--color-gray);
-}

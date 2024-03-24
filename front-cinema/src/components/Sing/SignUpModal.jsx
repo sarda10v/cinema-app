@@ -5,15 +5,12 @@ import { authSignUp } from "../../features/applicationSlice";
 import styles from "./SignModal.module.css";
 
 const SignUpModal = ({ setAuths, setLogins }) => {
-  const error = useSelector((state) => state.application.error);
-  const signingUp = useSelector((state) => state.application.signingUp);
-  const dispatch = useDispatch();
-
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [clearInput, setClearInput] = useState(false);
+  const { signingUp, error } = useSelector((state) => state.application);
+  const dispatch = useDispatch();
 
-  // !! FORM: LOGIN, PASSWORD и BUTTON
   const handleSetName = (e) => {
     setLogin(e.target.value);
   };
@@ -30,13 +27,9 @@ const SignUpModal = ({ setAuths, setLogins }) => {
       setAuths(false);
     }
   };
-
-  // !! ФУНКЦИЯ ЗАКРЫТИЯ МОДАЛКИ
   const handleCloseModalAuth = () => {
     setAuths(false);
   };
-
-  // !! ПЕРЕЙТИ НА АВТОРИЗАЦИЮ
   const handleOpenModalLogin = () => {
     setLogins(true);
     setAuths(false);
@@ -62,7 +55,6 @@ const SignUpModal = ({ setAuths, setLogins }) => {
           onChange={handleSetPass}
           placeholder="password"
         />
-        {/* ПРОВЕРКИ */}
         {signingUp ? <div>Loading...</div> : null}
         {error ? <div>Ник занят!</div> : null}
         {clearInput ? <div>"Заполните все поля"</div> : null}

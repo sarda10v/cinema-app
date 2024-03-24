@@ -49,6 +49,11 @@ export const authSignIn = createAsyncThunk(
     }
   }
 );
+export const logout = createAsyncThunk("logout", (_, thunkAPI) => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("login");
+  localStorage.removeItem("id");
+});
 
 export const applicationSlice = createSlice({
   name: "application",
@@ -62,7 +67,7 @@ export const applicationSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder // !! AUTH
+    builder
       .addCase(authSignUp.pending, (state) => {
         state.signingUp = true;
         state.error = null;
@@ -74,7 +79,7 @@ export const applicationSlice = createSlice({
       .addCase(authSignUp.fulfilled, (state) => {
         state.signingUp = false;
         state.error = null;
-      }) // !! LOGIN
+      })
       .addCase(authSignIn.pending, (state) => {
         state.signingIn = true;
         state.error = null;
@@ -88,6 +93,9 @@ export const applicationSlice = createSlice({
         state.error = null;
         state.token = action.payload?.token;
         state.id = action.payload?.id;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.token = null;
       });
   },
 });

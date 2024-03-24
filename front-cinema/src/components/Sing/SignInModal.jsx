@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers } from "../../features/usersSlice";
 import { authSignIn } from "../../features/applicationSlice";
-import styles from "./SignModal.module.css";
+import cls from "./SignModal.module.css";
+import { Button } from "../../widgets/Button/ui/Button";
 
 const SignInModal = ({ setLogins, setAuths }) => {
-  const error = useSelector((state) => state.application.error);
-  const signingIn = useSelector((state) => state.application.signingIn);
-  const token = useSelector((state) => state.application.token);
-  const dispatch = useDispatch();
-
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const { signingIn, token, error } = useSelector((state) => state.application);
+  const dispatch = useDispatch();
 
-  // !! FORM: LOGIN, PASSWORD и BUTTON
   const handleSetName = (e) => {
     setLogin(e.target.value);
   };
@@ -24,13 +21,9 @@ const SignInModal = ({ setLogins, setAuths }) => {
     e.preventDefault();
     dispatch(authSignIn({ login, password }));
   };
-
-  // !! ФУНКЦИЯ ЗАКРЫТИЯ МОДАЛКИ АВТОРИЗАЦИИ
   const handleCloseModalLogin = () => {
     setLogins(false);
   };
-
-  // !! ПЕРЕЙТИ НА РЕГИСТРАЦИЮ
   const handleOpenModalAuth = () => {
     setAuths(true);
     setLogins(false);
@@ -41,9 +34,8 @@ const SignInModal = ({ setLogins, setAuths }) => {
   }, [dispatch]);
 
   return (
-    <div className={styles.divFlex}>
+    <div className={cls.divFlex}>
       <h3>АВТОРИЗАЦИЯ</h3>
-      {/* FORM */}
       <form onSubmit={handleSignUp}>
         <input
           type="text"
@@ -57,17 +49,22 @@ const SignInModal = ({ setLogins, setAuths }) => {
           onChange={handleSetPass}
           placeholder="Ваш пароль"
         />
-        {/* ПРОВЕРКИ */}
         {signingIn ? <div>Loading...</div> : null}
         {error ? <div>{error}</div> : null}
         {token
           ? <div>Вы успешно авторизованны!</div> && setLogins(false)
           : null}
-        {/* для закрытия модалки, если все успешно, нужно поставить setTimeout на 3с */}
-
-        <button type="sumbit">Войти</button>
-        <button onClick={handleOpenModalAuth}>Регистрация </button>
-        <button onClick={handleCloseModalLogin}>закрыть</button>
+        <div className={cls.wrapperBtn}>
+          <Button className={cls.btn} type="sumbit">
+            Войти
+          </Button>
+          <Button className={cls.btn} onClick={handleOpenModalAuth}>
+            Регистрация
+          </Button>
+          <Button className={cls.btn} onClick={handleCloseModalLogin}>
+            Закрыть
+          </Button>
+        </div>
       </form>
     </div>
   );
